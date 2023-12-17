@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from database.connect import get_db
 from database.pydantic_models import UserIn
 from database import model
-from app.utils import verify_password, create_access_token
+from utils.auth_util import verify_password, create_access_token
 from fastapi.security import OAuth2PasswordRequestForm
 router = APIRouter(
     tags = ['Authentication']

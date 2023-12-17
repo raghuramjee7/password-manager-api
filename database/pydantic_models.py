@@ -1,5 +1,7 @@
-from pydantic import BaseModel
-from typing import Optional
+from pydantic import BaseModel, HttpUrl, UrlConstraints
+from typing import Annotated, Optional
+
+from pydantic_core import Url
 
 class KeyPair(BaseModel):
     public_key: str
@@ -8,15 +10,19 @@ class KeyPair(BaseModel):
 class UserIn(BaseModel):
     username: str
     password: str
-    public_key: str
-
+    
 class UserOut(BaseModel):
     username: str
     public_key: str
     created_at: str
 
 class ItemIn(BaseModel):
-    site: str
+    url: HttpUrl = Annotated[
+                Url,
+                UrlConstraints(
+                    max_length=2083, allowed_schemes=["http", "https"]
+                ),
+            ]
     username: str
     password: str
 

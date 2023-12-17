@@ -9,7 +9,6 @@ class User(Base):
     id = Column(Integer, primary_key=True)
     username = Column(String, unique=True, nullable=False)
     password = Column(String, nullable=False)
-    public_key = Column(String, nullable=False)
     created_at = Column(String, nullable=False, server_default=text("NOW()"))
 
 class Item(Base):
