@@ -16,6 +16,14 @@ class UserOut(BaseModel):
     public_key: str
     created_at: str
 
+class ItemDelete(BaseModel):
+    url: HttpUrl = Annotated[
+                Url,
+                UrlConstraints(
+                    max_length=2083, allowed_schemes=["http", "https"]
+                ),
+            ]
+
 class ItemIn(BaseModel):
     url: HttpUrl = Annotated[
                 Url,
