@@ -1,7 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from database.connect import get_db
 from database.model import User
-from utils.encryption_util import encrypt_password, decrypt_password
 from database.pydantic_models import ItemIn, ItemOut, ItemDelete
 from sqlalchemy.orm import Session
 from utils.auth_util import validate_user
