@@ -23,6 +23,10 @@ app.add_middleware(
 
 model.Base.metadata.create_all(bind = connect.engine) 
 
+@app.get("/")
+async def main():
+    return {"message": "Welcome to the Password Manager API"}
+
 app.include_router(user.router)
 app.include_router(item.router)
 app.include_router(auth.router)
