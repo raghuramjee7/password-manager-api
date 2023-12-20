@@ -25,16 +25,16 @@ def password_conditions(password: str):
     if len(password) < 8:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Password must be at least 8 characters long")
     
-    if not any([char not in '0123456789' for char in password]):
+    if not any([char in '0123456789' for char in password]):
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Password must contain at least one number")
     
-    if not any([char not in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' for char in password]):
+    if not any([char in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' for char in password]):
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Password must contain at least one uppercase letter")
     
-    if not any([char not in 'abcdefghijklmnopqrstuvwxyz' for char in password]):
+    if not any([char in 'abcdefghijklmnopqrstuvwxyz' for char in password]):
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Password must contain at least one lowercase letter")
     
-    if not any([char not in '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~' for char in password]):
+    if not any([char in '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~' for char in password]):
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Password must contain at least one special character")
     
 
